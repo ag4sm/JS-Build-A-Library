@@ -1,7 +1,9 @@
 # Build a Library JavaScript demo
 #### Showcasing Class inheritance and syntax
 
-This builds a library of media objects.  It uses a parent Media class then builds 
+This builds a library of media objects.  It uses a parent Media class then builds different media classes
+for types of media but they all share a few common properties with all media thus inherit
+from the parent Media class.
 
 Further things to do with this project:  
 * add more properties to each class (moviecast, song titles, etc)
