@@ -101,6 +101,51 @@ class Movie extends Media {
     }
 }
 
+class CD extends Media {
+    constructor(title, numOfTracks, tracks, year, genre) {
+        super(title);
+        this._numOfTracks = numOfTracks;
+        this._tracks = tracks;
+        this._year = year;
+        this._genre = genre;
+        this._isCheckedOut = false;
+        this._ratings = [];
+    }
+
+    // getters
+    get numOfTracks() {
+        return this._numOfTracks;
+    }
+    get tracks() {
+        return this._tracks;
+    }
+    get year() {
+        return this._year;
+    }
+    get genre() {
+        return this._genre;
+    }
+
+    // setters
+    set tracks([]) {
+        this._tracks = Array.push;
+    }
+
+    getAverageRating() {
+        let ratingsSum = this.ratings.reduce((currentSum,rating) => currentSum + rating);
+        return ratingsSum / this.ratings.length;
+    }
+    toggleCheckoutStatus() {
+        this.isCheckedOut = !this.isCheckedOut;
+    }
+    addRating(rating) {
+        this.ratings.push(rating);
+    }
+    addTrack(track) {
+        this.tracks.push(track);
+    }
+}
+
 // instantiate an instance of a Book object
 const historyOfEverything = new Book("A Short History of Nearly Everything",
     "Bill Bryson",
@@ -131,3 +176,23 @@ speed.addRating(1);
 speed.addRating(5);
 console.log(speed.ratings); // logs out array of just added ratings
 console.log(speed.getAverageRating()); // logs out average of ratings
+
+// create instance of a CD
+const garth = new CD("Garth Brooks",
+    3,
+    ["The Dance","Standing Outside The Fire","The Thunder Rolls"],
+    1993,
+    "Country"
+);
+
+// interact with the garth CD tracks
+console.log(`Tracks of CD: ${garth.tracks}`);
+garth.addTrack("This Damn Old");
+console.log(`Tracks of CD: ${garth.tracks}`);
+garth.tracks.pop();
+
+
+garth.addRating(2);
+garth.addRating(1);
+garth.addRating(5);
+console.log(`Average Rating of CD: ${garth.getAverageRating()}`);
